@@ -19,37 +19,34 @@
 // console.log(builder.value; // '=^.^='
 
 class StringBuilder {
-
-constructor(_value){
+  constructor(_value) {
     this._value = _value;
-}
+  }
 
-get value() {
+  get value() {
     return this._value;
+  }
+
+  append(str) {
+    return (this._value = this._value + str);
+  }
+
+  prepend(str) {
+    return (this._value = str + this._value);
+  }
+
+  pad(str) {
+    return (this._value = str + this._value + str);
+  }
 }
 
-append(str)   {
-  return this._value = this._value + str;
-}
+const builder = new StringBuilder(".");
 
-prepend(str) {
-return this._value = str + this._value;
-}
-
-pad(str) {
-return this._value = str + this._value + str;
-}
-
-}
-
-
-const builder = new StringBuilder('.');
-
-builder.append('^');
+builder.append("^");
 console.log(builder.value); // '.^'
 
-builder.prepend('^');
+builder.prepend("^");
 console.log(builder.value); // '^.^'
 
-builder.pad('=');
+builder.pad("=");
 console.log(builder.value); // '=^.^='
